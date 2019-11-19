@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package serverudpchat;
+package serverudpecho;
 
 import java.io.IOException;
 import java.net.SocketException;
@@ -12,12 +12,14 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author pc15
+ * @author Bozzo
  */
 public class ServerUDPEcho {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
+     * @throws java.lang.InterruptedException
      */
     public static void main(String[] args) throws IOException, InterruptedException {
         int c;
@@ -25,7 +27,7 @@ public class ServerUDPEcho {
         try {
             
             // TODO code application logic here
-            UDPEcho echoServer= new UDPEcho(1077);
+            UDPEcho echoServer= new UDPEcho(1234);
             thread= new Thread(echoServer);
             //echoServer.start();
             thread.start();

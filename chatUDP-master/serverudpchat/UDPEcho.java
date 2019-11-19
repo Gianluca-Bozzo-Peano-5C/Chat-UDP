@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package serverudpchat;
+
+package serverudpecho;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -58,7 +54,10 @@ public class UDPEcho implements Runnable {
         
         while (!Thread.interrupted()){
             try {
+                 System.out.println("in attesa di un pacchetto");
+
                 socket.receive(request); //mi metto in attesa di ricevere pacchetto da un clinet
+                System.out.println("ho ricevuto un pacchetto");
                 client.addr = request.getAddress(); //e memorizzo indirizzo
                 client.port = request.getPort();    //e porta
                 //genero quindi il clientID del client cha ha inviato il pacchetto appena ricevuto
