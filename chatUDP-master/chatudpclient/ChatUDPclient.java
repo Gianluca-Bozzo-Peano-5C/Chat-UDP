@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package chatudpclient;
 
 import java.io.IOException;
@@ -20,18 +15,19 @@ import chatudpclient.ReceiveFromServerAndPrint;
 
 /**
  *
- * @author Prof Matteo Palitto
+ * @author Bozzo 
  */
 public class ChatUDPclient {
 
     /**
      * @param args the command line arguments
+     * @throws java.net.UnknownHostException
      */
     public static void main(String[] args) throws UnknownHostException {
 
         String IP_address = "127.0.0.1";
         InetAddress address = InetAddress.getByName(IP_address);
-        int UDP_port = 1077;
+        int UDP_port = 1234;
 
 
         DatagramSocket socket;
@@ -44,7 +40,7 @@ public class ChatUDPclient {
             Thread receiveAndPrint = new Thread(new ReceiveFromServerAndPrint(socket));
             receiveAndPrint.start();
             System.out.println("sono in ascolto...");
-
+            System.out.println("");
             //creo il thread che invia il messaggio digitato da utente verso il server
             Thread sendUserInput = new Thread(new SendUserInputToServer(socket, address, UDP_port));
             sendUserInput.start();
